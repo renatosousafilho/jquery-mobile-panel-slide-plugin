@@ -1,4 +1,26 @@
 	$( document ).on( "pageinit", "#demo-page" , function() {
+var mouseEventTypes = {
+        touchstart : "mousedown",
+        touchmove : "mousemove",
+        touchend : "mouseup"
+    };
+
+    for (originalType in mouseEventTypes) {
+        document.addEventListener(originalType, function(originalEvent) {
+            if(originalEvent.type == 'click')
+                return;
+            if (originalEvent.type != 'touchstart' && originalEvent.type !='touchend'){
+                originalEvent.preventDefault();
+            }
+            event = document.createEvent("MouseEvents");
+            touch = originalEvent.changedTouches[0];
+            event.initMouseEvent(mouseEventTypes[originalEvent.type], true, true, window, 0, touch.screenX, touch.screenY, touch.clientX, touch.clientY, touch.ctrlKey, touch.altKey, touch.shiftKey, touch.metaKey, 0, null);
+            originalEvent.target.dispatchEvent(event);
+            event.preventDefault();         
+        });
+    }
+}
+    
    $.props = {
     originalPosition: '272px'
   }
@@ -29,6 +51,8 @@
                   event.originalEvent.mozMovementX    ||
                   event.originalEvent.webkitMovementX ||
                   0;
+    window.alert(event.originalEvent.movementX);
+    window.alert(event.originalEvent.mozMovementX);
     if ($.props.position == 'right') { 
       less = less * (-1);
       if (less<0){
