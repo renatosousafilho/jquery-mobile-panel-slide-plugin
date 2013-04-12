@@ -19,7 +19,6 @@ var mouseEventTypes = {
             event.preventDefault();         
         });
     }
-}
     
    $.props = {
     originalPosition: '272px'
@@ -51,8 +50,8 @@ var mouseEventTypes = {
                   event.originalEvent.mozMovementX    ||
                   event.originalEvent.webkitMovementX ||
                   0;
-    window.alert(event.originalEvent.movementX);
-    window.alert(event.originalEvent.mozMovementX);
+    // window.alert(event.originalEvent.movementX);
+    // window.alert(event.originalEvent.mozMovementX);
     if ($.props.position == 'right') { 
       less = less * (-1);
       if (less<0){
