@@ -18,18 +18,21 @@
     $('.ui-panel-content-wrap').css('left', originalPosition);
   });
 });
+
+
   $.event.special.swipe.stop = function( event ) {
     event.preventDefault();
     var data = event.originalEvent.touches ?
     event.originalEvent.touches[ 0 ] : event;
     var less = event.originalEvent.webkitMovementX;
+    window.alert(event.originalEvent.webkitMovementX);
     if ($.props.position == 'right') { 
       less = less * (-1);
       if (less<0){
         $('.ui-panel-content-wrap').css('left',"-=" + less);
       }
     } else {
-     
+
       if (less<0) {
        $('.ui-panel-content-wrap').css('left',"+=" +less);
      }
@@ -46,7 +49,7 @@
    if ( stop.time - start.time < $.event.special.swipe.durationThreshold &&
      Math.abs( start.coords[ 0 ] - stop.coords[ 0 ] ) > $.event.special.swipe.horizontalDistanceThreshold &&
      Math.abs( start.coords[ 1 ] - stop.coords[ 1 ] ) < $.event.special.swipe.verticalDistanceThreshold ) {
-     
+
      start.origin.trigger( "swipe" )
    .trigger( start.coords[0] > stop.coords[ 0 ] ? "swipeleft" : "swiperight" );
  }
