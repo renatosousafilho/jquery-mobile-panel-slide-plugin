@@ -24,8 +24,11 @@
     event.preventDefault();
     var data = event.originalEvent.touches ?
     event.originalEvent.touches[ 0 ] : event;
-    var less = event.originalEvent.webkitMovementX;
-    window.alert(event.originalEvent.webkitMovementX);
+    // var less = event.originalEvent.webkitMovementX;
+    var less = event.originalEvent.movementX       ||
+                  event.originalEvent.mozMovementX    ||
+                  event.originalEvent.webkitMovementX ||
+                  0;
     if ($.props.position == 'right') { 
       less = less * (-1);
       if (less<0){
