@@ -1,0 +1,30 @@
+<html>
+  <head>
+	<title>jQuery Mobile Page</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="apple-mobile-web-app-capable" content="yes" />
+	<link rel="stylesheet" href="jquery.mobile-1.3.1.css" />
+	<script src="jquery-1.9.1.min.js"></script>
+  <script src="jquery.mobile-1.3.1.js"></script>
+	<script src="jquery-mobile-panel-slide-plugin.js"></script>
+
+</head>
+<body>
+<section data-role="page" id="demo-page" data-position='fixed'>
+	<header data-role="header">
+		<h1>Page header</h1>
+	</header><!-- /header -->
+	<article data-role="content">
+		<a href="#panel-left" data-role="button">Abrir painel da esquerda</a>
+		<a href="#panel-right" data-role="button">Abrir painel da direita</a>
+	</article><!-- /content -->
+	<footer data-role="footer">
+		<h4>Page footer</h4>
+	</footer><!-- /footer -->
+        <div data-role="panel" id="panel-left" data-dismissible="false" data-position="left"></div>
+	<div data-role="panel" id="panel-right" data-dismissible="false" data-position="right">
+	</div>
+</section><!-- /page -->
+</body>
+</html>
